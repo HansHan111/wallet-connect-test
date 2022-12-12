@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 
 import { useWeb3React } from '@web3-react/core'
 import { Web3Provider } from '@ethersproject/providers'
-import { Box, Button, Text } from '@chakra-ui/react'
+import { Box, Button, Link, Text } from '@chakra-ui/react'
 import { UserRejectedRequestError } from '@web3-react/injected-connector'
 import { formatAddress } from '../utils/helpers'
 import { injected } from '../utils/connectors'
@@ -11,6 +11,7 @@ import { alertService } from '../services';
 const ConnectMetamask = () => {
 
     const { chainId, account, activate, deactivate, setError, active, library, connector } = useWeb3React<Web3Provider>()
+
 
     const onClickConnect = () => {
         alertService.warn(window.ethereum)
@@ -23,6 +24,19 @@ const ConnectMetamask = () => {
                 setError(error)
             }
         }, false)
+    }
+
+    let actions: any = {
+        onClick: onClickConnect
+    }
+
+    if (typeof window !== "undefined" && !window.ethereum) {
+        actions = {
+            as: Link,
+            href: 'https://metamask.app.link/dapp/pancakeswap.finance/',
+            target: "_blank",
+            rel: "noopener noreferrer",
+        };
     }
 
     const onClickDisconnect = () => {
@@ -44,7 +58,7 @@ const ConnectMetamask = () => {
                 </Box>
             ) : (
                 <Box>
-                    <Button type="button" w='100%' onClick={onClickConnect}>
+                    <Button type="button" w='100%' {...actions}>
                         Connect MetaMask
                     </Button>
                     <Text fontSize="sm" w='100%' my='2' align='center'> not connected </Text>
