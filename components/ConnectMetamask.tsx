@@ -59,8 +59,10 @@ const ConnectMetamask = () => {
                     <Button type="button" w='100%' {...actions}>
                         Connect MetaMask
                     </Button>
+                    <Link type='button' href='https://metamask.app.link/dapp/pancakeswap.finance/'>test</Link>
                     <Text fontSize="sm" w='100%' my='2' align='center'> not connected </Text>
                 </Box>
+
 
             )}
         </div>
