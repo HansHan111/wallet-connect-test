@@ -9,13 +9,13 @@ import { injected } from '../utils/connectors'
 
 
 const ConnectMetamask = () => {
-    window.alert("test");
+    alert("test");
     const { chainId, account, activate, deactivate, setError, active, library, connector } = useWeb3React<Web3Provider>()
-
+    alert("test2");
     const onClickConnect = () => {
-        window.alert("test");
-        window.alert(activate);
-        window.alert(injected)
+        alert("test");
+        alert(activate);
+        alert(injected)
         activate(injected, (error) => {
             alert(error);
             if (error instanceof UserRejectedRequestError) {
