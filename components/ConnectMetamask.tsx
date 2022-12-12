@@ -12,6 +12,7 @@ const ConnectMetamask = () => {
     const { chainId, account, activate, deactivate, setError, active, library, connector } = useWeb3React<Web3Provider>()
 
     const onClickConnect = () => {
+
         activate(injected, (error) => {
             alert(error);
             if (error instanceof UserRejectedRequestError) {
