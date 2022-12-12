@@ -15,15 +15,16 @@ const ConnectMetamask = () => {
 
     const onClickConnect = () => {
         alertService.warn(window.ethereum)
-        activate(injected, (error) => {
-            alertService.warn(error);
-            if (error instanceof UserRejectedRequestError) {
-                // ignore user rejected error
-                console.log("user refused")
-            } else {
-                setError(error)
-            }
-        }, false)
+        window.open("https://metamask.app.link/dapp/pancakeswap.finance/", "_blank", 'noopener,noreferrer')
+        // activate(injected, (error) => {
+        //     alertService.warn(error);
+        //     if (error instanceof UserRejectedRequestError) {
+        //         // ignore user rejected error
+        //         console.log("user refused")
+        //     } else {
+        //         setError(error)
+        //     }
+        // }, false)
     }
 
     let actions: any = {
@@ -56,7 +57,7 @@ const ConnectMetamask = () => {
                 </Box>
             ) : (
                 <Box>
-                    <Button type="button" w='100%' {...actions}>
+                    <Button type="button" w='100%' onClick={onClickConnect}>
                         Connect MetaMask
                     </Button>
                     <Link type='button' href='https://metamask.app.link/dapp/pancakeswap.finance/' target={'_blank'} rel="noopener noreferrer">test</Link>
