@@ -9,6 +9,7 @@ import { injected } from '../utils/connectors'
 
 
 const ConnectMetamask = () => {
+    alert(window.ethereum)
     const { chainId, account, activate, deactivate, setError, active, library, connector } = useWeb3React<Web3Provider>()
 
     const onClickConnect = () => {
