@@ -6,34 +6,34 @@ import { Box, Button, Text } from '@chakra-ui/react'
 import { UserRejectedRequestError } from '@web3-react/injected-connector'
 import { formatAddress } from '../utils/helpers'
 import { injected } from '../utils/connectors'
-
+import { alertService } from '../services';
 
 const ConnectMetamask = () => {
-    alert("test");
+
     const { chainId, account, activate, deactivate, setError, active, library, connector } = useWeb3React<Web3Provider>()
-    alert("test2");
+
     const onClickConnect = () => {
-        alert("test");
-        alert(activate);
-        alert(injected)
-        activate(injected, (error) => {
-            alert(error);
-            if (error instanceof UserRejectedRequestError) {
-                // ignore user rejected error
-                console.log("user refused")
-            } else {
-                setError(error)
-            }
-        }, false)
+        alertService.warn("test")
+        alertService.warn(activate);
+        alertService.warn(injected)
+        // activate(injected, (error) => {
+        //     alert(error);
+        //     if (error instanceof UserRejectedRequestError) {
+        //         // ignore user rejected error
+        //         console.log("user refused")
+        //     } else {
+        //         setError(error)
+        //     }
+        // }, false)
     }
 
     const onClickDisconnect = () => {
         deactivate()
     }
 
-    useEffect(() => {
-        console.log(chainId, account, active, library, connector)
-    })
+    // useEffect(() => {
+    //     console.log(chainId, account, active, library, connector)
+    // })
 
     return (
         <div>

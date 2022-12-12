@@ -4,7 +4,7 @@ import { ChakraProvider } from '@chakra-ui/react'
 import { Web3ReactProvider } from '@web3-react/core'
 import { Web3Provider } from '@ethersproject/providers'
 import { Layout } from '../components/layout'
-
+import { Alert } from '../components'
 
 function getLibrary(provider: any): Web3Provider {
   const library = new Web3Provider(provider)
@@ -16,6 +16,7 @@ export default function App({ Component, pageProps }: AppProps) {
     <Web3ReactProvider getLibrary={getLibrary}>
       <ChakraProvider>
         <Layout>
+          <Alert />
           <Component {...pageProps} />
         </Layout>
       </ChakraProvider>
