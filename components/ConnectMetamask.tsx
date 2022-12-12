@@ -13,18 +13,16 @@ const ConnectMetamask = () => {
     const { chainId, account, activate, deactivate, setError, active, library, connector } = useWeb3React<Web3Provider>()
 
     const onClickConnect = () => {
-        alertService.warn("test")
-        alertService.warn(activate);
-        alertService.warn(injected)
-        // activate(injected, (error) => {
-        //     alert(error);
-        //     if (error instanceof UserRejectedRequestError) {
-        //         // ignore user rejected error
-        //         console.log("user refused")
-        //     } else {
-        //         setError(error)
-        //     }
-        // }, false)
+        alertService.warn(window.ethereum)
+        activate(injected, (error) => {
+            alertService.warn(error);
+            if (error instanceof UserRejectedRequestError) {
+                // ignore user rejected error
+                console.log("user refused")
+            } else {
+                setError(error)
+            }
+        }, false)
     }
 
     const onClickDisconnect = () => {
