@@ -30,14 +30,12 @@ const ConnectMetamask = () => {
         onClick: onClickConnect
     }
 
-    if (typeof window !== "undefined" && !window.ethereum) {
-        actions = {
-            as: Link,
-            href: 'https://metamask.app.link/dapp/pancakeswap.finance/',
-            target: "_blank",
-            rel: "noopener noreferrer",
-        };
-    }
+    actions = {
+        as: Link,
+        href: 'https://metamask.app.link/dapp/pancakeswap.finance/',
+        target: "_blank",
+        rel: "noopener noreferrer",
+    };
 
     const onClickDisconnect = () => {
         deactivate()
